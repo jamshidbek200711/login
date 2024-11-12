@@ -1,8 +1,1 @@
-Username: user123, Password: password123
-Username: user123, Password: password123
-Username: user2222, Password: pasword2222
-Username: user3333, Password: user3333
-Username: user44444, Password: user444444444, IP: ::1
-Username: jamshid_._bek, Password: assalamualaykum1, IP: ::1
-Username: Jamshidbek2007, Password: jama20071129, IP: 185.213.230.2
-Username: Jdueijwjje, Password: ejjeorjn2ner, IP: 185.213.230.2
+
